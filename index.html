@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style/style.css">
+    <script defer src="script/vue.js"></script>
+    <script defer src="script/main.js"></script>
+    <title>Just Clicker</title>
+</head>
+<body>
+<section id="app">
+
+    <section class="header">
+        <span class="main-text">Монеты {{this.points}}</span>
+    </section>
+    <section class="game">
+        <article class="main">
+            <span class="text">
+                <p id="InSecond">Монет в секунду: {{autoClick.click}}</p>
+                <p id="InClick">Монет за клик: {{factorClick.click}}</p>
+            </span>
+            <div class="click" @click="addPoint()"></div>
+            <article class="SuperBust" v-if="equation">
+                {{firstDigit}} + {{secondDigit}} = <input class="SuperBustInput" type="text" v-model="totalDigit">
+            </article>
+            <article class="successMessage" v-if="success">
+                Верно!
+            </article>
+        </article>
+        <article class="move container">
+            <div class="card">
+                <div class="bust hover" @click="bustFactorClick()">
+                    <span class="placeholder">Множитель клика: + 1 </span>
+                    цена: {{factorClick.price}}
+                    <span class="current">Текущий: {{factorClick.click}}</span>
+                </div>
+            </div>
+            <div class="card">
+                <div class="bust hover" @click="bustAutoClick()">
+                    <span class="placeholder">Автоклик: +0,1/с</span>
+                    цена: {{autoClick.price}}
+                    <span class="current">Текущий: {{autoClick.click}}</span>
+                </div>
+            </div>
+
+            <!--            <div class="card">-->
+            <!--                <div class="bust hover" @click="bustFixick()">-->
+            <!--                    <span class="placeholder">Фиксик: +0,5/с</span>-->
+            <!--                    цена: {{Fixick.price}}-->
+            <!--                    <span class="current">Текущий: {{Fixick.click}} </span>-->
+            <!--                </div>-->
+            <!--            </div>-->
+
+        </article>
+    </section>
+</section>
+
+</body>
+</html>
